@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Koababi | Ma commande{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="my-4">Ma commande </h1>
+    <a href="{{path('account_order')}}"><strong><- Retour</strong></a>
+    {% if order|length == 0 %}
+     <p>Vous n'avez pas encore passé de commande sur notre site.
+     {% else %}
+     <div class="row my-4">
+        <div class="mb-4">
+            <div class="bg-light p-3">
+                <h3>Informations sur la commande</h3>
+                <strong>Date : </strong>{{order.createdAt| date('d/m/Y')}}<br/>
+                <strong>Réference :</strong> {{order.reference}}<br/>
+                <strong>Transporteur: </strong>{{order.carrierName}}
+            </div>
+            
+        
+            <h3 class="mt-4">Détail de la commande</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Produit</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in order.orderDetails %}
+                            <tr>
+                            <td>{{product.product}}</td>
+                            <td>{{product.quantity}}</td>
+                            <td>{{((product.price)/ 100)|number_format(2,',','.')}}€</td>
+                            <td>{{((product.total)/ 100)|number_format(2,',','.')}}€</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div>
+                    <p>Sous-total : {{((order.total)/ 100)|number_format(2,',','.')}}€</p>
+                    <p>Livraison : {{((order.carrierPrice)/ 100)|number_format(2,',','.')}}€</p>
+                    <p>Total : {{((order.carrierPrice + order.total)/ 100)|number_format(2,',','.')}}€</p>
+                </div>
+                
+        </div>
+     </div>
+        
+    {% endif %}
+</div>
+{% endblock %}
+

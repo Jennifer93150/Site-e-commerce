@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Koababi | Ma commande {% endblock %}
+
+{% block body %}
+<div class="container">
+     <h2>Confirmation de ma commande</h2>
+    <p>Bonjour {{order.user.firstname|capitalize}} {{order.user.lastname|capitalize}}</p>
+    Nous vous remercions pour votre commande n°{{order.reference}}
+    <br/>
+    Une confirmation vient de vous être envoyé par mail à l'adresse {{order.user.email}}
+    <br/>
+    <hr>
+    Votre commande sera livrée par {{order.carrierName}} à l'adresse suivante:<br/>
+    {{order.delivery|raw}}
+
+    <hr>    
+    <div>
+    <p>Pour suivre votre commande, rendez vous sur <a href="{{path('account_order')}}"><strong> votre compte </strong></a></p>
+    </div>
+</div>
+{% endblock %}

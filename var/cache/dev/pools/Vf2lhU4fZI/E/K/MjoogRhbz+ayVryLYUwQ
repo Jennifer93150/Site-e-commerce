@@ -1,0 +1,3 @@
+<?php //App%255CClasse%255CSearch%2524min
+
+return [PHP_INT_MAX, []];

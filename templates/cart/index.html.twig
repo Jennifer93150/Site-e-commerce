@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre panier{% endblock %}
+
+{% block body %}
+    <div class="container">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+        <div class="p-3">
+            <h1>Votre panier</h1>
+        </div>
+       <div class="tableau">
+        <table class="table" max-width="" width="100%">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th></th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- Je declare à twig une nouvelle variable "total" qui sera incrémenter à chaque entrée dans la boucle -->
+            {% set total = null %}
+            {% for element in cart %}
+                <tr>
+                    <td>
+                        <img src="/uploads/{{ element.product.illustration}}" alt="{{ element.product.name }}" height="75px">
+                    </td>
+                    <td class="">{{ element.product.name }}</td>
+                    <td class="">{{ (element.product.price / 100) |number_format(2,',','.') }} €</td>
+                    <td><a href="{{path("add_to_cart", {id: element.product.id})}}" class="btn btn-add">
+                            <i class="bi bi-cart-plus">+</i>
+                        </a>
+                        {{ element.quantity }}
+                        <a href="{{path("decrease", {id: element.product.id})}}" class="btn btn-decrease">
+                            <i class="bi bi-cart-dash">-</i>
+                        </a>
+                    </td>
+                    <td class="">{{ (element.quantity * element.product.price / 100) |number_format(2,',','.') }} €</td>
+                    <td>
+                        
+                        
+                        <a href="{{path("delete", {id: element.product.id})}}" class="btn btn-danger btn-delete">
+                            <i class="bi bi-cart-x">x</i>
+                        </a>
+                    </td>
+                </tr>
+                {% set total = total + (element.quantity * element.product.price) %}
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">Votre panier est vide</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <a href="{{path("remove_cart")}}" class="btn btn-danger"><i class="bi bi-cart-x"></i>Vider le panier</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Total</td>
+                <td class="text-end"> {{ (total / 100) |number_format(2,',','.')}}€</td>
+            </tr>
+        </tfoot>
+        </table>
+       </div>
+        
+        <div class="text-end">
+            <a href="{{path("order")}}" class="btn form-button">Valider mon panier</a>
+        </div>
+    </div>
+   
+
+
+    
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Koababi | Mes commandes{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1  class="my-4">Mes commandes</h1>
+    <a href="{{path('account')}}"><strong><- Retour</strong></a>
+    {% if orders|length == 0 %}
+     <p>Vous n'avez pas encore passé de commande sur notre site.
+     {% else %}
+     <div class="my-4 row tableau">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Référence</th>
+                    <th scope="col">Produits</th>
+                    <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                {% for order in orders %}
+                <tbody>
+                    <tr>
+                    <td>{{order.createdAt| date('d/m/Y')}}</td>
+                    <td>{{order.reference}}</td>
+                    <td>{{order.orderDetails|length}}</td>
+                    <td>{{((order.carrierPrice + order.total)/ 100)|number_format(2,',','.')}}€</td>
+                    <td><button class="btn form-button"><a href="{{path('account_order_show', {'reference': order.reference}) }}">Voir en détail</a></button></td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        
+     </div>
+        
+    {% endif %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Koababi | Mes adresses{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Mes adresses</h1>
+    <a href="{{path('account')}}"><strong><- Retour</strong></a>
+    {% if app.user.addresses|length == 0 %}
+     <p>Vous n'avez pas encore renseigné d'adresse dans votre compte client. Pour en ajouter une <a href="">cliquer ici</a></p>
+     {% else %}
+     <div class="container-form text-end m-3"><a href="{{path('add_address')}}" class="btn btn-info">Ajouter une adresse</a></div>
+     <div class="row">
+        
+        {% for address in app.user.addresses %}
+            <div class="col-md-3 m-1 rounded div-addresses">
+                <div class="card border border-dark" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{address.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{address.address}}</h6>
+                        <p class="card-text">{{address.postal}}</p>
+                        <p class="card-text">{{address.city}}</p>
+                        <p class="card-text">{{address.country}}</p>
+                        <a href="{{path('edit_address', {'id': address.id})}}" class="card-link">Modifier</a> |<a href="{{path('delete_address', {'id': address.id})}}" class="card-link">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        
+     </div>
+        
+     {% endif %}
+</div>
+{% endblock %}

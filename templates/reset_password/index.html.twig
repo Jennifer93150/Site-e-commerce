@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Koababi | Mot de passe oublié{% endblock %}
+
+{% block body %}
+<div class="block-small container-form">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <form method="post">
+    
+        <h1 class="h3 mb-3 font-weight-normal">Vous avez oublié votre mot de passe ?</h1>
+        <label for="inputEmail" class="mt-4">Entrez votre adresse mail</label>
+        <input type="email" value="" name="email" id="inputEmail" class="form-control mt-3" autocomplete="email" required autofocus>
+        <div class="text-center">
+            <button class="btn form-button mt-4" type="submit">Valider</button>
+        </div>
+    </form>
+    <div class="text-center m-4">
+        <a href="{{path('app_login')}}" class="">Connectez-vous à votre compte</a>
+    </div>
+</div>
+
+    
+{% endblock %}

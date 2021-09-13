@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Koababi | Valider ma commande {% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Je passe commande</h1>
+    <p>Choisissez votre adresse de livraison et votre transporteur avant de commander.</p>
+    
+    
+    <div class="row div-order-recap">
+        <div class="button-choice-address">
+            <button class="btn choice-address-button m-2"><a href="{{ path('add_address')}}">Ajouter une adresse</a></button>
+        </div>
+        <hr>
+        <div class="col-md-6 choice-address">
+            {% set formHtml %}
+                <!-- grace à action:path('order_recap') je specifie que la soumission 
+                de ce form se fera sur une url differente dc je serai rediriger vers la pg en question-->
+                {{ form_start(form, {action:path('order_recap')})}}
+                    {{form_label(form.addresses, 'Choisissez votre adresse de livraison')}}
+                {{form_end(form)}}
+            {% endset %}
+            {{ formHtml|replace({'[br]':'<br>'})|raw}}
+        </div>
+        <div class="col-md-6 order-recap">
+            <div>
+                <h5>Récapitulatif de ma commande</h5>
+            </div>
+            <div class="recap-order">
+            {% for key,product in cart %}
+                <!-- boucle pour afficher le recap des produits
+                    key > 0 = Si il ya + que 1 produit (key=l'emplacement du produit ds array) alors met une margin -->
+                <div class="row {% if key > 0 %}mt-2{% endif %}">
+                    <div class="col-4">
+                        <img src="/uploads/{{ product.product.illustration}}" alt="{{ product.product.name }}" height="75px">
+                    </div>
+                    <div class="col-6 my-auto">
+                        {{ product.product.name}}
+                    </div>
+                        
+                    <div class="col-2 my-auto">
+                        x {{ product.quantity}}
+                    </div>
+                </div>
+            {% endfor %}
+           </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

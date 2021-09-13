@@ -1,0 +1,259 @@
+/* GENERAL */
+
+body{
+     background-color: #FFFFF5;
+}
+
+a{
+     text-decoration: none;
+     color: black;
+}
+
+a:hover{
+     color: palevioletred;
+}
+
+/* BARRE DE NAVIGATION */
+.link-nav{
+     color: black;
+}
+
+.link-nav:hover{
+     color: rgb(167, 105, 126);
+}
+
+.navbar-light .navbar-nav .nav-link{
+     color: black;
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+     color: palevioletred;
+}
+ 
+/* PAGE PRODUITS */
+
+.pg-product{
+     margin: auto;
+}
+
+.filter{
+     background-color: white;
+     border-radius: 10px;
+     height: 30%;
+}
+
+.filter-button{
+     background-color: #e5f77d;
+     width: 100%
+}
+
+/* CARTE PRODUITS */ 
+
+.div-card{
+     margin: auto;
+     padding-left: 70px;
+}
+
+.card-button{
+     background-color: #e5f77d;
+}
+
+/* PANIER */
+
+.tableau{
+     overflow: auto;/* permet de faire glisser le panier car trop long*/
+}
+
+.btn-add{
+     background-color: #ffffff;
+     border: 2px solid black;
+     /*border-radius: 50%;*/
+     color: black;
+}
+
+.btn-decrease{
+     background-color: black;
+     /*border-radius: 50%;*/
+     color: white;
+}
+
+.btn-delete{
+     /*border-radius: 50%;*/
+     color: white;
+}
+
+/* PAGE CHOIX ADRESSE */
+
+.choice-address-button{
+     background-color: #e5f77d;
+     width: 100%
+}
+
+/* FORMULAIRES EN GENERAL */
+
+.container-form{
+     padding-left: 30%;
+     padding-right: 30%;
+}
+
+.form-button{
+     background-color: #7dd2f7;
+     color: black;
+     width: 100%
+
+}
+
+.form-button:hover{
+     background-color: palevioletred;
+     color: white;
+
+}
+
+/* PAGE je passe commande */
+
+.recap-order{
+     background-color: rgba(255, 180, 205, 0.146);
+     padding: 20px;
+}
+
+.form-check{
+     background-color: rgba(255, 180, 205, 0.146);
+     padding: 20px 65px;
+}
+
+.col-form-label{
+     font-weight: bold;
+}
+
+#order_submit{
+     width: 100%;
+}
+
+/* FOOTER */
+
+.footer{
+     background-color: black;
+     color: white;
+     height: 200px;
+     margin-top: 50px;
+     padding: 20px;
+     text-align: center;
+     
+ }
+
+.footer a{
+     color: white;
+}
+
+.footer a:hover{
+     color: palevioletred;
+}
+
+/********* MEDIAQUERIES **********/
+
+@media screen and (max-width: 320px){
+     .div-card{
+          padding-left: 0px;
+     }
+
+}
+
+@media screen and (max-width: 375px){
+     .div-card{
+          padding-left: 0px;
+     }
+}
+
+@media screen and (min-width: 426px){
+     #carouselExampleControls{
+          display: none;
+     }
+}
+
+
+@media screen and (max-width: 425px){
+     /* CARTE PRODUIT */
+     .div-card{
+          padding-left: 23px;
+     }
+     .img-thumbnail {
+          margin: 10px;
+     }
+
+     /* PANIER */
+     .btn-add, .btn-decrease, .btn-delete{
+          width: 5%;
+          height: 10px;
+     }
+     /* FORMULAIRE CHOIX ADRESSE inversement ordre des div */
+
+     .div-order-recap{
+          display: flex;
+     }
+
+     .button-choice-address{
+          flex:1;
+          order: 2;
+     }
+
+     .choice-address{
+          order: 3;
+     }
+
+     .order-recap{
+          order: 1;
+     }
+
+     /* FORMULAIRE GENERAL */
+
+     .container-form{
+          padding-left: 40px;
+          padding-right: 40px;
+     }
+
+     /* CAROUSEL PAGE ACCUEIL MODE MOBILE */
+
+     #carouselExampleFade{
+          display: none;
+     }
+}
+
+@media screen and (max-width: 991px) and (min-width: 426px){
+     /* PAGE PRODUIT */
+     .form-check{
+          padding-left: 30px;
+          font-size: 15px;
+     }
+
+     .div-card{
+          padding-left: 0px;
+     }
+
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px){
+     /* PAGE CHOIX ADRESSE */
+     .div-addresses{
+          margin: 30px !important;
+     }
+
+}
+
+@media screen and (max-width: 768px) and (min-width: 426px){
+     /* PAGE CHOIX ADRESSE */
+     .div-addresses{
+          
+          margin-left: 60px !important;
+          margin-right: 60px !important;
+     }
+}
+
+@media screen and (max-width: 1199px){
+     /* PAGE PRODUIT */
+     .form-check{
+          padding-left: 30px;
+          font-size: 15px;
+     }
+}
+
+

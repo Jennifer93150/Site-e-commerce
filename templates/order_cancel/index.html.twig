@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Koababi | Erreur de paiment {% endblock %}
+
+{% block body %}
+<div>
+     <h2> Erreur de paiment </h2>
+    <p>Bonjour {{order.user.firstname}} {{order.user.lastname}}</p>
+    Votre paiement pour la commande n°{{order.reference}} a été refusé.
+    <br/>
+    Une confirmation d'échec vient de vous être envoyé par mail à l'adresse {{order.user.email}}.
+    <br/>
+</div>
+<hr>
+<div>
+    <a href="{{ path('order') }}" class="btn btn-success">Réssayer le paiement</a>
+</div>
+{% endblock %}

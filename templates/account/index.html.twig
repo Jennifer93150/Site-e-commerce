@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Koababi | Mon compte{% endblock %}
+
+{% block body %}
+
+<div class="container"> 
+    {% if app.user %}
+        <div class="mb-3">
+             <a href="{{ path('app_logout') }}" class="btn card-button">Se déconnecter</a>
+        </div>
+    {% endif %} 
+    <h1>Mon compte</h1>
+    <a href="{{path('home')}}"><strong> <- Retour</strong></a></br>
+    <hr>
+    <p>Bienvenue dans votre espace personnel <strong>{{app.user.firstName | capitalize}} {{app.user.lastName | capitalize}}</strong>.</p></br>
+    <div class="container row">
+        <button class="btn form-button col-md-4 py-4 px-1 m-3"><a href="{{path('account_password')}}">Modifier mon mot de passe</a></button>
+        <button class="btn form-button col-md-4 py-4 px-1 m-3"><a href="{{path('account_address')}}">Gérer mes adresses de livraison</a></button>
+        <button class="btn form-button col-md-4 py-4 px-1 m-3"><a href="{{path('account_order')}}">Consulter mes commandes</a></button>
+    
+    </div>
+    
+</div>
+{% endblock %}
