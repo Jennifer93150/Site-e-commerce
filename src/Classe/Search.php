@@ -32,7 +32,7 @@ class Search
     /**
      * @var boolean
      */
-    public $promo = false;
+    #public $promo = false;
 
 
 }

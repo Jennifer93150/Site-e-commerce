@@ -26,8 +26,8 @@ class Cart
     {
         # On "fabrique" les données
         $dataCart = [];
-        # Maintenant ce que je veux c'est remplir datacart avec les données des produits que doctrine ira recup ds la bdd
-        /* comme $this->get() est un array dont la structure ressemble à array:1 [▼ id 1 => qté 3] alors je dois boucler dessus de la meme manière*/
+        /* Maintenant ce que je veux c'est remplir datacart avec les données des produits que doctrine ira recup ds la bdd
+       comme $this->get() est un array dont la structure ressemble à array:1 [▼ id 1 => qté 3] alors je dois boucler dessus de la meme manière*/
         # Si l'objet panier existe (j'impose cette condition sinon une erreur s'affiche quand le panier est vide car il boucle sur rien (pas de pdt))
         if($this->get()){
             # Alors boucle sur mes produits

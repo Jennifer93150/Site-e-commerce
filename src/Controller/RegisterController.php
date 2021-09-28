@@ -26,7 +26,6 @@ class RegisterController extends AbstractController
      */
     public function index(Request $request, UserPasswordHasherInterface $passwordEncoder): Response
     {
-       
         $user = new User();
         $user->setRoles(['ROLE_USER']);
         $form = $this->createForm(RegisterType::class, $user);
@@ -47,6 +46,7 @@ class RegisterController extends AbstractController
 
                 # Envoi à la bdd
                 $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
                 $entityManager->flush();
 
                 # Message de succes

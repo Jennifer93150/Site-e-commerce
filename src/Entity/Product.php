@@ -60,10 +60,10 @@ class Product
      */
     private $size;
 
-    public function __toString()
+    /*public function __toString()
     {
         return $this->getSize();
-    }
+    }*/
 
     public function getId(): ?int
     {

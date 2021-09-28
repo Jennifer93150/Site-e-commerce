@@ -6,7 +6,9 @@
 <div class="container">
     <div class="row  mt-3 pg-product">
         <div class="pr-5"><h1 class="text-center m-5"> Notre collection</h1></div>
-        
+        {% if is_granted('ROLE_ADMIN') %}
+            <button class="btn btn-light bg-light border-dark"><a class="" href="{{path('admin')}}">Gérer les produits</a></button>
+        {% endif %}
         <div class="col-lg-2 p-3 filter">
             <h3>Filtre</h3>
             {{form(form)}}
